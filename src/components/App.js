@@ -27,7 +27,7 @@ import { MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import DrawerMUI from './DrawerMUI';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import './csit.css';
-import Paivityspyynto from './components/Paivityspyynto';
+import Omattiedot from './components/Omattiedot';
 import Tilaatiedot from './components/Tilaatiedot';
 import Login from './components/Login';
 
@@ -87,8 +87,8 @@ export default function CSIT_proto() {
           <BrowserRouter>
               <DrawerMUI />
               <Switch>
-                <Route exact path='/'/>
-                <Route path='/paivitysspyynto' component={Paivityspyynto}/>
+                <Route exact path='/' component={omattiedot}/>
+                <Route path='/muutospyynto' component={Paivityspyynto}/>
                 <Route path='/tilaatiedot' component={Tilaatiedot}/>
               <Route path='/kirjauduulos' component={Login}/>
               </Switch>
@@ -137,8 +137,10 @@ export default function CSIT_proto() {
         <form className={classes.root} noValidate autoComplete="off">
           <br />
           <h3>Omat tiedot</h3>
-          <TextField disabled id="username" label="Käyttäjätunnus" defaultValue="marko.menninkäinen@csit.fi" />
-          <TextField disabled id="socialSecurityCode" label="Henkilötunnus" defaultValue="123456-1234" />
+          <input className="e-input" type="text" placeholder="Enter Name" value="John" readOnly= {true}/>
+      <input type='text' required = {true} readOnly = {true} value="John" />
+      <TextField id="username" label="Käyttäjätunnus" readOnly= {true} defaultValue="marko.menninkäinen@csit.fi" />
+          <TextField id="socialSecurityCode" label="Henkilötunnus" InputProps={{ readOnly: true, }} defaultValue="123456-1234" />
           <br />
           <TextField id="familyName" label="Sukunimi" defaultValue="Menninkäinen" />
           <TextField id="firstNames" label="Etunimet" defaultValue="Jouni Marko Mikael" />
@@ -147,22 +149,22 @@ export default function CSIT_proto() {
           <TextField id="address" label="Osoite" defaultValue="Metsätölli 2 B" />
           <TextField id="postalCode" label="Postinumero" defaultValue="00520" />
           <TextField id="PostalDistrict" label="Postitoimipaikka" defaultValue="Metsälä" />
-          <br /><span class="disabled"><h3>Työsuhdetiedot</h3></span>
-          <TextField disabled id="LanguageCode" label="Kielikoodi" InputProps={{ readOnly: true, }} defaultValue="A1" />
-          <TextField disabled id="LanguageCodeDescription" label="Kielikuvaus" InputProps={{ readOnly: true, }} defaultValue="Kotimaiset kielet" />
+          <br /><h3>Työsuhdetiedot</h3>
+          <TextField id="LanguageCode" label="Kielikoodi" InputProps={{ readOnly: true, }} defaultValue="A1" />
+          <TextField id="LanguageCodeDescription" label="Kielikuvaus" InputProps={{ readOnly: true, }} defaultValue="Kotimaiset kielet" />
           <br />
-          <TextField disabled id="workPeriodId" label="Työjaksokoodi" InputProps={{ readOnly: true, }} defaultValue="B2" />
-          <TextField disabled id="workPeriodDescription" label="Työjaksokuvaus" InputProps={{ readOnly: true, }} defaultValue="Töissä" />
+          <TextField id="workPeriodId" label="Työjaksokoodi" InputProps={{ readOnly: true, }} defaultValue="B2" />
+          <TextField id="workPeriodDescription" label="Työjaksokuvaus" InputProps={{ readOnly: true, }} defaultValue="Töissä" />
           <br />
-          <TextField disabled id="OficialJobDescription" label="Virallinen kuvaus" InputProps={{ readOnly: true, }} defaultValue="IT-konsultti" />
-          <TextField disabled id="workDepartment" label="Osasto" InputProps={{ readOnly: true, }} defaultValue="Toimisto" />
+          <TextField id="OficialJobDescription" label="Virallinen kuvaus" InputProps={{ readOnly: true, }} defaultValue="IT-konsultti" />
+          <TextField id="workDepartment" label="Osasto" InputProps={{ readOnly: true, }} defaultValue="Toimisto" />
           <br />
-          <TextField disabled id="workPeriodStartDate" label="Työsuhteen alku" InputProps={{ readOnly: true, }} defaultValue="01.01.2016" /> {/* tähän kalenteri */}
-          <TextField disabled id="workPeriodEndDate" label="Työsuhteen loppu" InputProps={{ readOnly: true, }} defaultValue="Toistaiseksi" />
-          <TextField disabled id="workPeriodStatus" label="Työsuhteen status" InputProps={{ readOnly: true, }} defaultValue="Kyllä" />
+          <TextField id="workPeriodStartDate" label="Työsuhteen alku" InputProps={{ readOnly: true, }} defaultValue="01.01.2016" /> {/* tähän kalenteri */}
+          <TextField id="workPeriodEndDate" label="Työsuhteen loppu" InputProps={{ readOnly: true, }} defaultValue="Toistaiseksi" />
+          <TextField id="workPeriodStatus" label="Työsuhteen status" InputProps={{ readOnly: true, }} defaultValue="Kyllä" />
           <br />
-          <TextField disabled id="isSupervisorc" label="Onko esimies" InputProps={{ readOnly: true, }} defaultValue="Ei" /> {/* tähän true/false */}
-          <TextField disabled id="idOfSupervisor" label="Esimiehen ID" InputProps={{ readOnly: true, }} defaultValue="007" />
+          <TextField id="isSupervisorc" label="Onko esimies" InputProps={{ readOnly: true, }} defaultValue="Ei" /> {/* tähän true/false */}
+          <TextField id="idOfSupervisor" label="Esimiehen ID" InputProps={{ readOnly: true, }} defaultValue="007" />
           <br /><br />
           <Button variant="contained" color="primary" onClick={handleClickOpen} size="small">
             Tallenna

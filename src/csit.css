@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito|Francois+One&display=swap');
+
+/*.Kirjasto {
+  text-align: center;
+  color: #404040;
+  background-color: #e8f1f2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    font-family: Arial, sans-serif;
+}*/
+
+
+/*.Kirjasto-header, h3 {
+  font-size: calc(18px + 2vmin);
+  color: #404040;
+}
+
+h5 {
+font-family: 'Francois One', sans-serif !important;
+text-transform: uppercase;
+}
+
+.lomake{
+    max-width:50%;
+    float: left;
+}
+
+.lista {
+    max-width:50%;
+    float: right;
+    text-align: left;
+}
+
+a {
+  color: #62ad7e;
+  text-decoration: none; }
+  a:hover, a:active, a:focus {
+    color: #497150;
+    text-decoration: underline; }*
+
+
+ 
+.button, [type=submit], [type=reset], [type=button] {
+  display: inline-block;
+  border: 1px solid #497150;
+  border-radius: 4px;
+  background: #62ad7e;
+  color: #ffffff;
+  font-weight: 600;
+  padding: .75rem 1.25rem;
+  margin-bottom: 0.5rem;
+    margin-left:15px;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+    width:95%}
+
+.button:hover, [type=submit]:hover, [type=reset]:hover, [type=button]:hover {
+  border: 1px solid #62ad7e;
+  background: #a8eca7;
+  color: #ffffff;
+  text-decoration: none; }
+
+.button:focus, .button:active, [type=submit]:focus, [type=submit]:active, [type=reset]:focus, [type=reset]:active, [type=button]:focus, [type=button]:active {
+  border: 1px solid #497150;
+  background: #62ad7e;
+  color: #ffffff;
+  text-decoration: none; }*/
+.MuiButton-root {
+border-radius: 20px!important;
+padding-top: 10px!important;
+    padding-bottom: 10px!important;}
+
+.MuiButton-containedPrimary:hover {
+    background-color:white!important;
+    color:#111111!important;
+    border:#666666 1px!important;
+    }
+.MuiButton-containedSecondary:hover {
+    background-color:#fae2d6!important;
+    color:#111111!important;
+    border:#666666 1px!important;
+    }
+
+.MuiInputBase-input:active, .MuiInputBase-input:focus{
+    background-color:#d5dcf0;}
+.disabled {
+color:#888888;
+}
+/**
+ * Forms*/
+
+/*[type=color], [type=date], [type=datetime], [type=datetime-local], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=url], [type=week], [type=time], select, textarea {
+    display: inline-block;
+    border: 1px solid #62ad7e;
+  border-radius: 4px;
+  padding: .5rem;
+  outline: none;
+  background: #fff;
+    margin-top: 0.5rem; 
+  font-size: 1rem;
+  max-width: 100%;
+  line-height: 1; }
+
+[type=color]:hover, [type=date]:hover, [type=datetime]:hover, [type=datetime-local]:hover, [type=email]:hover, [type=month]:hover, [type=number]:hover, [type=password]:hover, [type=search]:hover, [type=tel]:hover, [type=text]:hover, [type=url]:hover, [type=week]:hover, [type=time]:hover, select:hover, textarea:hover {
+  border: 1px solid #c5c5c5; }
+
+[type=color]:focus, [type=color]:active, [type=date]:focus, [type=date]:active, [type=datetime]:focus, [type=datetime]:active, [type=datetime-local]:focus, [type=datetime-local]:active, [type=email]:focus, [type=email]:active, [type=month]:focus, [type=month]:active, [type=number]:focus, [type=number]:active, [type=password]:focus, [type=password]:active, [type=search]:focus, [type=search]:active, [type=tel]:focus, [type=tel]:active, [type=text]:focus, [type=text]:active, [type=url]:focus, [type=url]:active, [type=week]:focus, [type=week]:active, [type=time]:focus, [type=time]:active, select:focus, select:active, textarea:focus, textarea:active {
+  border: 1px solid #62ad7e;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #62ad7e; }
+
+textarea {
+  overflow: auto;
+  height: auto;
+    margin-left:15px;
+width:90%}
+
+fieldset {
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1.5rem; }
+
+label {
+    display: inline-block;
+    text-align: right;
+    padding-right: 5px;
+    width:120px;
+  }
+
+@media (min-width: 600px) {
+  .split-form label {
+    text-align: right;
+    padding: 0.2rem;
+    margin-bottom: 0.2rem; } }
+
+input.has-error, input.has-error:hover, input.has-error:focus, input.has-error:active,
+select.has-error,
+select.has-error:hover,
+select.has-error:focus,
+select.has-error:active,
+textarea.has-error,
+textarea.has-error:hover,
+textarea.has-error:focus,
+textarea.has-error:active {
+  border: 1px solid #D33C40;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #f4cecf; }*/
