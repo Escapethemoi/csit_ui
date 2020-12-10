@@ -112,7 +112,7 @@ function DrawerMUI () {
           </IconButton>
           </Grid>
 <Grid item className={ classes.logo } ><Link to='/'>
-<img src={logo} alt="csit logo" width="60%"/></Link>
+<img src={logo} alt="csit logo" width="40%"/></Link>
 </Grid>
 
 <Grid item>
@@ -152,7 +152,7 @@ function DrawerMUI () {
 <List component='nav'>
 <ListItem button component={Link} to='/'>
 <ListItemIcon><HomeIcon color='primary'/></ListItemIcon>
-<ListItemText>Omat tiedot</ListItemText>
+<ListItemText>Muokkaa omia tietoja</ListItemText>
 </ListItem>
 <ListItem button component={Link} to='/muutospyynto'>
 <ListItemIcon><CreateIcon color='primary'/></ListItemIcon>
