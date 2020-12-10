@@ -21,19 +21,21 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import logo from './csit_logo.png';
-import grey from '@material-ui/core/colors/grey';
-import red from '@material-ui/core/colors/red';
+import { MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
-import { createMuiTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const teema = createMuiTheme({
   palette: {
     primary: {
-      main: '#41402',
+      main: '#414042', contrastText: 'white'
     },
     secondary: {
-      main: '#ed1c24',
+      main: '#ed1c24', contrastText: 'white'
     },
+    action: {hover: '#eeeeee', active: '#eeeeee'},
+    background: {default: '#eeeeee'}
+  },typography:{
+    fontFamily:[ 'Nunito', 'sans-serif']
   },
 });
 
@@ -41,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '30ch',
+      borderRadius:'20px',
+      padding:'10px',
     },
   },
 }));
@@ -71,35 +75,16 @@ export default function CSIT_proto() {
 
   return (
     <div>
-      <AppBar position="static" color="white" elevation={0}>
-        <Grid container direction="row" justify="space-around" alignItems="flex-start">
-          <Grid item>
-            <img src={logo} alt="csit logo meni särki" width="40%" /> {/* jos useampia sivuja niin tästä koti-nappi */}
-          </Grid>
-          <Grid item>
-            <Toolbar>
-              
-              <IconButton size="small" aria-controls="simple-menu" edge="start" className={classes.menuButton} color="inherit" aria-label="menu" aria-haspopup="true" onClick={handleClick}>
-                <ExitToAppIcon />
-                Kirjaudu ulos
-              </IconButton>
-              <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                <MenuItem onClick={handleClose}>Kirjaudu ulos</MenuItem>
-              </Menu>
-            </Toolbar>
-          </Grid>
-        </Grid>
-      </AppBar>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <form className={classes.root} noValidate autoComplete="off">
-        <br /><br /><br />
+      <Grid container direction="row" justify="center" alignItems="center" padding="10px">
+        <form className={classes.root} noValidate autoComplete="off" justify="center">
+        <br />
           <h3>Lähetä viesti IT-tukeen</h3>
           <TextField id="name" label="Nimi" InputProps={{ readOnly: true, }} defaultValue="Marko Menninkäinen" />
           <br/>
           <TextField id="username" label="Käyttäjätunnus" InputProps={{ readOnly: true, }} defaultValue="marko.menninkäinen@csit.fi" />
           <br/>
           <TextField id="viesti" label="Viesti" multiline rows={6} fullWidth variant="outlined" />
-          
+
           <br /><br />
           <Button variant="contained" color="primary" onClick={handleClickOpen} size="small">
             Lähetä

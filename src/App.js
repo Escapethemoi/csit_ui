@@ -3,8 +3,7 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 //import Typography from '@material-ui/core/Typography';
@@ -30,6 +29,7 @@ import './csit.css';
 import Paivityspyynto from './components/Paivityspyynto';
 import Tilaatiedot from './components/Tilaatiedot';
 import Login from './components/Login';
+import Omattiedot from './components/Omattiedot';
 
 const teema = createMuiTheme({
   palette: {
@@ -47,149 +47,35 @@ const teema = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles((teema) => ({
-  root: {
-    '& > *': {
-      margin: teema.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
 
-export default function CSIT_proto() {
-  const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+function App() {
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpen(false);
-  };
 
   return (
 
           <div>
           <MuiThemeProvider theme={ teema }>
-          <div>
-          <BrowserRouter>
-              <DrawerMUI />
-              <Switch>
-                <Route exact path='/'/>
-                <Route path='/paivitysspyynto' component={Paivityspyynto}/>
-                <Route path='/tilaatiedot' component={Tilaatiedot}/>
-              <Route path='/kirjauduulos' component={Login}/>
-              </Switch>
-              </BrowserRouter>
-                </div>
       <AppBar position="static" color="white" elevation={0}>
-        <Grid container direction="row" justify="space-around" alignItems="flex-start">
-          <Grid item>
-            <img src={logo} alt="csit logo meni särki" width="40%" /> {/* jos useampia sivuja niin tästä koti-nappi */}
-          </Grid>
-          <Grid item>
+
+        <BrowserRouter>
+            <DrawerMUI />
+            <Switch>
+              <Route exact path='/'component={Omattiedot}/>
+              <Route path='/paivitysspyynto' component={Paivityspyynto}/>
+              <Route path='/tilaatiedot' component={Tilaatiedot}/>
+            <Route path='/login' component={Login}/>
+            </Switch>
+            </BrowserRouter>
+
             <Toolbar>
-              <IconButton size="small" color="inherit" onClick={handleClickOpen}>
-                <MailOutlineIcon />
-            Yhteys tukeen
-      </IconButton>
-              <Dialog id="it-tuki" open={open} onClose={handleCloseDialog} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Ota yhteyttä IT-tukeen</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    Kirjoita viestisi alla olevaan kenttään niin se siirtyy automaagisesti IT-tuelle.
-          </DialogContentText>
-                  <TextField autoFocus margin="dense" id="name" label="Viestisi" type="email" fullWidth />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleCloseDialog} className={'Primary'} color="secondary">
-                    Lähetä
-          </Button>
-                  <Button onClick={handleCloseDialog} color="primary">
-                    Peruuta
-          </Button>
-                </DialogActions>
-              </Dialog>
-              <IconButton size="small" aria-controls="simple-menu" edge="start" className={classes.menuButton} color="inherit" aria-label="menu" aria-haspopup="true" onClick={handleClick}>
-                <ExitToAppIcon />
-                Kirjaudu ulos
-              </IconButton>
-              <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                <MenuItem onClick={handleClose}>Kirjaudu ulos</MenuItem>
-              </Menu>
-            </Toolbar>
-          </Grid>
-        </Grid>
-      </AppBar>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <form className={classes.root} noValidate autoComplete="off">
-          <br />
-          <h3>Omat tiedot</h3>
-          <TextField disabled id="username" label="Käyttäjätunnus" defaultValue="marko.menninkäinen@csit.fi" />
-          <TextField disabled id="socialSecurityCode" label="Henkilötunnus" defaultValue="123456-1234" />
-          <br />
-          <TextField id="familyName" label="Sukunimi" defaultValue="Menninkäinen" />
-          <TextField id="firstNames" label="Etunimet" defaultValue="Jouni Marko Mikael" />
-          <TextField id="nickName" label="Kutsumanimi" defaultValue="Lil'Marko" />
-          <br />
-          <TextField id="address" label="Osoite" defaultValue="Metsätölli 2 B" />
-          <TextField id="postalCode" label="Postinumero" defaultValue="00520" />
-          <TextField id="PostalDistrict" label="Postitoimipaikka" defaultValue="Metsälä" />
-          <br /><span class="disabled"><h3>Työsuhdetiedot</h3></span>
-          <TextField disabled id="LanguageCode" label="Kielikoodi" InputProps={{ readOnly: true, }} defaultValue="A1" />
-          <TextField disabled id="LanguageCodeDescription" label="Kielikuvaus" InputProps={{ readOnly: true, }} defaultValue="Kotimaiset kielet" />
-          <br />
-          <TextField disabled id="workPeriodId" label="Työjaksokoodi" InputProps={{ readOnly: true, }} defaultValue="B2" />
-          <TextField disabled id="workPeriodDescription" label="Työjaksokuvaus" InputProps={{ readOnly: true, }} defaultValue="Töissä" />
-          <br />
-          <TextField disabled id="OficialJobDescription" label="Virallinen kuvaus" InputProps={{ readOnly: true, }} defaultValue="IT-konsultti" />
-          <TextField disabled id="workDepartment" label="Osasto" InputProps={{ readOnly: true, }} defaultValue="Toimisto" />
-          <br />
-          <TextField disabled id="workPeriodStartDate" label="Työsuhteen alku" InputProps={{ readOnly: true, }} defaultValue="01.01.2016" /> {/* tähän kalenteri */}
-          <TextField disabled id="workPeriodEndDate" label="Työsuhteen loppu" InputProps={{ readOnly: true, }} defaultValue="Toistaiseksi" />
-          <TextField disabled id="workPeriodStatus" label="Työsuhteen status" InputProps={{ readOnly: true, }} defaultValue="Kyllä" />
-          <br />
-          <TextField disabled id="isSupervisorc" label="Onko esimies" InputProps={{ readOnly: true, }} defaultValue="Ei" /> {/* tähän true/false */}
-          <TextField disabled id="idOfSupervisor" label="Esimiehen ID" InputProps={{ readOnly: true, }} defaultValue="007" />
-          <br /><br />
-          <Button variant="contained" color="primary" onClick={handleClickOpen} size="small">
-            Tallenna
-      </Button>
-          <Dialog id="tallennusvarmistus" open={open} onClose={handleCloseDialog} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-            <DialogTitle id="alert-dialog-title">{"Tallennetaanko tiedot?"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Tarkista että kaikki muutetut tiedot ovat oikein.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleCloseDialog} color="primary">
-                Tallenna
-          </Button>
-              <Button onClick={handleCloseDialog} color="secondary" autoFocus>
-                Peruuta
-          </Button>
-            </DialogActions>
-          </Dialog>
-          <Button variant="contained" color="secondary" size="small">
-            Peruuta
-      </Button>
-        </form>
-      </Grid>
+            </Toolbar></AppBar>
+
+
+
       </MuiThemeProvider>
     </div>
 
   );
 }
+export default App;
