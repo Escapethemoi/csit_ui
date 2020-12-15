@@ -21,7 +21,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import logo from './csit_logo.png';
-import { MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, withStyles} from '@material-ui/core/styles';
 
 
 const teema = createMuiTheme({
@@ -46,9 +46,42 @@ const useStyles = makeStyles((theme) => ({
       width: '30ch',
       borderRadius:'20px',
       padding:'10px',
+
+    },
+
+  },
+  saate:{
+    width:'60ch',
+    [theme.breakpoints.down('sm')]: {
+      width:'30ch',
     },
   },
 }));
+const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: '#4634ad',
+      fontWeight:'bold',
+    },
+    //  '& fieldset': {  color: '#4634ad!important',    backgroundColor: '#4634ad!important',  },
+      '& input:focus + fieldset': {
+        borderColor: '#4634ad!important',
+        //  backgroundColor: '#d4dbef',
+            outlineColor: '#4634ad!important',
+      },
+      '& input:active + fieldset': {
+        borderColor: '#4634ad!important',
+        //  backgroundColor: '#d4dbef',
+          outlineColor: '#4634ad!important',
+      },
+      '& input:active': {
+          backgroundColor: '#d4dbef',
+      },
+      '& input:focus': {
+          backgroundColor: '#d4dbef',
+      },
+    },
+})(TextField);
 
 export default function CSIT_proto() {
   const classes = useStyles();
@@ -76,32 +109,33 @@ export default function CSIT_proto() {
   return (
     <div>
       <Grid container direction="row" justify="center" alignItems="center" padding="10px">
+
         <form className={classes.root} noValidate autoComplete="off" justify="center">
-        <br />
+        <Grid item className={classes.saate}>
           <h3>Työsuhdetietojen muutospyyntö</h3>
           <p>Mikäli sinun tarvitsee muuttaa itseäsi koskevia työsuhdetietoja, voit syöttää muutettavat tiedot tänne, ja lähettää tarkistuspyynnön. Tarkistamme annetut tiedot, ja olemme tarvittaessa yhteydessä sinuun.</p>
+          </Grid>
+          <Grid item className={classes.root}>
           <TextField id="name" label="Nimi" defaultValue="Marko Menninkäinen" />
           <br/>
           <TextField id="username" label="Käyttäjätunnus" defaultValue="marko.menninkäinen@csit.fi" />
 
           <h3>Työsuhdetiedot</h3>
-          <TextField id="LanguageCode" label="Kielikoodi" defaultValue="A1" />
-          <TextField id="LanguageCodeDescription" label="Kielikuvaus" defaultValue="Kotimaiset kielet" />
+          <CssTextField id="LanguageCode" label="Kielikoodi" defaultValue="A1" />
+          <CssTextField id="LanguageCodeDescription" label="Kielikuvaus" defaultValue="Kotimaiset kielet" />
           <br />
-          <TextField id="workPeriodId" label="Työjaksokoodi" defaultValue="B2" />
-          <TextField id="workPeriodDescription" label="Työjaksokuvaus" defaultValue="Töissä" />
+          <CssTextField id="workPeriodId" label="Työjaksokoodi" defaultValue="B2" />
+          <CssTextField id="workPeriodDescription" label="Työjaksokuvaus" defaultValue="Töissä" />
           <br />
-          <TextField id="OficialJobDescription" label="Virallinen kuvaus" defaultValue="IT-konsultti" />
-          <TextField id="workDepartment" label="Osasto" defaultValue="Toimisto" />
+          <CssTextField id="OficialJobDescription" label="Virallinen kuvaus" defaultValue="IT-konsultti" />
+          <CssTextField id="workDepartment" label="Osasto" defaultValue="Toimisto" />
           <br />
-          <TextField id="workPeriodStartDate" label="Työsuhteen alku" defaultValue="01.01.2016" /> {/* tähän kalenteri */}
-          <TextField id="workPeriodEndDate" label="Työsuhteen loppu" defaultValue="Toistaiseksi" />
-          <TextField id="workPeriodStatus" label="Työsuhteen status" defaultValue="Kyllä" />
+          <CssTextField id="workPeriodStartDate" label="Työsuhteen alku" defaultValue="01.01.2016" /> {/* tähän kalenteri */}
+          <CssTextField id="workPeriodEndDate" label="Työsuhteen loppu" defaultValue="Toistaiseksi" />
+          <CssTextField id="workPeriodStatus" label="Työsuhteen status" defaultValue="Kyllä" />
           <br />
-          <TextField id="isSupervisorc" label="Onko esimies" defaultValue="Ei" /> {/* tähän true/false */}
-          <TextField id="idOfSupervisor" label="Esimiehen ID" defaultValue="007" />
-          <br /><br />
-          
+          <CssTextField id="isSupervisorc" label="Onko esimies" defaultValue="Ei" /> {/* tähän true/false */}
+          <CssTextField id="idOfSupervisor" label="Esimiehen ID" defaultValue="007" />
           <br /><br />
           <Button variant="contained" color="primary" onClick={handleClickOpen} size="small">
             Lähetä
@@ -125,7 +159,9 @@ export default function CSIT_proto() {
           <Button variant="contained" color="secondary" size="small">
             Peruuta
       </Button>
+          </Grid>
         </form>
+
       </Grid>
     </div>
   );

@@ -48,6 +48,12 @@ const useStyles = makeStyles((theme) => ({
       padding:'10px',
     },
   },
+  saate:{
+    width:'60ch',
+    [theme.breakpoints.down('sm')]: {
+      width:'30ch',
+    },
+  },
 }));
 
 export default function CSIT_proto() {
@@ -77,17 +83,20 @@ export default function CSIT_proto() {
     <div>
       <Grid container direction="row" justify="center" alignItems="center" padding="10px">
         <form className={classes.root} noValidate autoComplete="off" justify="center">
-        <br />
+          <Grid item className={classes.saate}>
           <h3>Tilaa omat tiedot</h3>
           <p>EU:n GDPR-tietosuojasäännöt edellyttävät, että tietoja käsitellään asianmukaisesti ja lainmukaisesti tiettyä ja laillista tarkoitusta varten ja että vain tätä tarkoitusta varten tarvittavia tietoja käsitellään. Mikäli haluat tarkistaa mitä tietoja sinusta on tallennettu, lähetämme tiedot sinulle sähköpostitse.</p>
-          <TextField id="name" label="Nimi" InputProps={{ readOnly: true, }} defaultValue="Marko Menninkäinen" />
+        </Grid>
+        <Grid item className={classes.root}>
+         <TextField id="name" label="Nimi" InputProps={{ readOnly: true, }} defaultValue="Marko Menninkäinen" />
           <br/>
           <TextField id="username" label="Käyttäjätunnus" InputProps={{ readOnly: true, }} defaultValue="marko.menninkäinen@csit.fi" />
-          
+
           <br /><br />
           <Button variant="contained" color="primary" onClick={handleClickOpen} size="small">
             Tilaa
       </Button>
+
           <Dialog id="tallennusvarmistus" open={open} onClose={handleCloseDialog} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
             <DialogTitle id="alert-dialog-title">{"Lähetetäänkö viesti?"}</DialogTitle>
             <DialogContent>
@@ -107,6 +116,7 @@ export default function CSIT_proto() {
           <Button variant="contained" color="secondary" size="small">
             Peruuta
       </Button>
+  </Grid>
         </form>
       </Grid>
     </div>

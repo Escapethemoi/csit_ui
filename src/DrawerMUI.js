@@ -49,14 +49,18 @@ const teema = createMuiTheme({
 const useStyles = makeStyles((theme: Theme) =>
       createStyles ({
 mobileMenu:{
-  justifyContent:"center",
+  display:"flex",
+  justifyContent:"space-between",
+  padding:'20px 40px',
   alignItems:"center",
   [theme.breakpoints.down('sm')]: {
-  justifyContent:'left',
-}},
+  padding:'5px 0px',},
+[theme.breakpoints.down('md')]: {
+padding:'5px 0px',}},
 menu: {
 fontFamily:[ 'Nunito', 'sans-serif'],
 paddingRight:'30px',
+float:'right',
 [theme.breakpoints.down('sm')]: {
   display:'none',
 }},
@@ -72,9 +76,13 @@ logo: {
 width:'30%',
 [theme.breakpoints.down('sm')]: {
   width:'60%',
-  paddingRight:'0px',
-  float:'left',
 }},
+right: {
+  width:'30%',
+  justifyContent:'right',
+  [theme.breakpoints.down('md')]: {
+  width:'20%',}},
+
 linkki: {
 color:'#ed1c24',
 fontSize:'1.1em',
@@ -86,19 +94,20 @@ textDecoration:'underline',
 
 
 function DrawerMUI () {
-
+//MENUN FUNKTIOT
     const[open, setOpen] = useState(false);
     const handleOpen= () => { setOpen(true); }
     const handleClose= () => { setOpen(false); }
+//IT-TUEN VIESTIN FUNKTIOT
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const handleClickOpenDialog = () => {setDialogOpen(true);  };
+     const handleCloseDialog = () => {  setDialogOpen(false);};
 
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
-  //  const [open, setOpen] = React.useState(false);
     const handleClick = (event) => {setAnchorEl(event.currentTarget);  };
     const handleCloseB = () => {setAnchorEl(null);  };
-  const handleClickOpenDialog = () => {setOpen(true);  };
-   const handleCloseDialog = () => {  setOpen(false);};
+
 
     return (
       <div>
@@ -106,26 +115,64 @@ function DrawerMUI () {
         <AppBar position='static' color='white' elevation={0} >
           <Toolbar>
           <Grid container direction="row" className={ classes.mobileMenu}>
-<Grid item>
+<Grid item className={ classes.mobileMenu}>
             <IconButton className={ classes.menuIcon } onClick={handleOpen} color='inherit'>
             <MenuIcon fontSize="large" />
           </IconButton>
-          </Grid>
-<Grid item className={ classes.logo } ><Link to='/'>
-<img src={logo} alt="csit logo" width="40%"/></Link>
+<Link to='/'>
+<img className={ classes.logo } src={logo} alt="csit logo"/></Link>
 </Grid>
+<Grid item className={ classes.right }>
+   <IconButton size="small" color="inherit" className={ classes.menu } onClick={handleClickOpenDialog}>
+                <MailOutlineIcon />&nbsp;
+            <text>&nbsp;Yhteys IT-tukeen</text>
+      </IconButton>
+      <Dialog id="it-tuki" open={dialogOpen} onClose={handleCloseDialog} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Ota yhteyttä IT-tukeen
+        <DialogContentText>Kirjoita alle yhteystietosi sekä viestisi IT-tuelle. Otamme sinuun yhteyttä sähköpostitse mahdollisimman pian.</DialogContentText></DialogTitle>
+        <DialogContent>
+        <TextField margin="dense"
+        id="nimi"
+        label="Nimi"
+        placeholder=""
+        fullWidth
+      />
+        <TextField margin="dense"
+        id="email"
+        label="Sähköposti"
+        placeholder=""
+        fullWidth
+      />
+          <TextField
+          margin="dense"
+          id="standard-multiline-static"
+          label="Viestisi"
+          multiline
+          rows={4}
+          placeholder=""
+          variant="outlined"
+          fullWidth
+        />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} className={'Primary'} color="secondary">
+            Lähetä
+  </Button>
+          <Button onClick={handleCloseDialog} color="primary">
+            Peruuta
+  </Button>
+        </DialogActions>
+      </Dialog>
 
-
-
-        <IconButton className={ classes.menu } size="small" aria-controls="simple-menu" edge="start"  color="inherit" aria-label="menu" aria-haspopup="true" onClick={handleClick}>
+        <IconButton className={ classes.menu } size="small" aria-controls="simple-menu" edge="start"  color="inherit" aria-label="logout" aria-haspopup="true" onClick={handleClick}>
             <ExitToAppIcon />
-            <text>Kirjaudu ulos</text>
+            <text>&nbsp;Kirjaudu ulos</text>
           </IconButton>
               <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleCloseB}>
                 <MenuItem onClick={handleCloseB} component={Link} to='/login' className={classes.linkki}>Haluatko varmasti kirjautua ulos?</MenuItem>
               </Menu>
               </Grid>
-              
+              </Grid>
               </Toolbar>
     <Drawer anchor='left'  open={open} onClick={handleClose} >
 <List component='nav'>

@@ -48,7 +48,13 @@ const useStyles = makeStyles((theme) => ({
       padding:'10px',
     },
   },
-}));
+  saate:{
+    width:'60ch',
+    [theme.breakpoints.down('sm')]: {
+      width:'30ch',
+    },
+  },
+  }));
 
 export default function CSIT_proto() {
   const classes = useStyles();
@@ -77,9 +83,11 @@ export default function CSIT_proto() {
     <div>
       <Grid container direction="row" justify="center" alignItems="center" padding="10px">
         <form className={classes.root} noValidate autoComplete="off" justify="center">
-        <br />
+        <Grid item className={classes.saate}>
           <h3>Ota yhteyttä IT-tukeen</h3>
           <p>Jos sinun tarvitsee saada yhteys IT-tukeen koskien muita asioita, kuin portaalin palveluita, voit kirjoittaa viestisi allaolevaan kenttään. Palaamme sinulle sähköpostitse mahdollisimman pian.</p>
+          </Grid>
+            <Grid item className={classes.root}>
           <TextField id="name" label="Nimi" InputProps={{ readOnly: true, }} defaultValue="Marko Menninkäinen" />
           <br/>
           <TextField id="username" label="Käyttäjätunnus" InputProps={{ readOnly: true, }} defaultValue="marko.menninkäinen@csit.fi" />
@@ -108,6 +116,7 @@ export default function CSIT_proto() {
           <Button variant="contained" color="secondary" size="small">
             Peruuta
       </Button>
+      </Grid>
         </form>
       </Grid>
     </div>
