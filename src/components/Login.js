@@ -73,17 +73,17 @@ export default function CSIT_proto() {
     <MuiThemeProvider theme={ teema }>
       <Grid container direction="row" justify="center" alignItems="center">
         <form className={classes.root} noValidate autoComplete="off">
-          <br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br />
           <h3>Kirjaudu sisään</h3>
           <TextField id="username" label="Käyttäjätunnus" placeholder="marko.menninkäinen@csit.fi" /><br />
           <TextField id="salasana" label="Salasana" placeholder="*****" />
           <br />
 
-          <br /><br />
+          <br />
           <Button variant="contained" color="primary" component={Link} to='/' size="small">
             Kirjaudu
       </Button>
-
+<br /> <p>Unohditko salasanasi?</p>
         </form>
       </Grid>
   </MuiThemeProvider>
