@@ -1,4 +1,4 @@
-Test version runnin on Firebase:
+Test version running on Firebase:
 https://csit-a6604.web.app/
 
 # Getting Started with Create React App
